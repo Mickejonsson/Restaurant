@@ -30,6 +30,7 @@ namespace Restaurant
                 switch (keyPressed.Key)
                 {
                     case ConsoleKey.D1:
+                    case ConsoleKey.NumPad1:
 
                         Write("Dish: ");
 
@@ -39,9 +40,9 @@ namespace Restaurant
 
                         string table = ReadLine();
 
-                        Orders order = new Orders(dish, table);
+                        Orders newOrder = new Orders(dish, table);
 
-                        restaurant.RegisterOrder(order);
+                        restaurant.RegisterOrder(newOrder);
 
                        
                         Clear();
@@ -53,6 +54,20 @@ namespace Restaurant
                         break;
 
                     case ConsoleKey.D2:
+                    case ConsoleKey.NumPad2:
+
+                        WriteLine("Table    Dish                                   Registered");
+                        WriteLine("-------------------------------------------------------------------");
+
+                        foreach (Orders order in restaurant.OrderQueue)
+                        {
+                            WriteLine($"{order.Table}        {order.Dish}                                 {order.RegistereAt}");
+                        }
+
+                        WriteLine();
+                        WriteLine("Press any key to continue");
+
+                        ReadKey();
 
                         break;
 
